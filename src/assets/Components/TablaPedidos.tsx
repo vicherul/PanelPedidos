@@ -94,7 +94,7 @@ const TablaPedidos: React.FC = () => {
             </tbody>
           </table>
           
-          {/* Footer de la tabla opcional */}
+          {/* // Footer con información adicional */}
           <div className="px-6 py-4 border-t border-slate-100 bg-slate-50/30">
             <p className="text-xs text-slate-400">Mostrando {pedidos.length} pedidos realizados este mes.</p>
           </div>
