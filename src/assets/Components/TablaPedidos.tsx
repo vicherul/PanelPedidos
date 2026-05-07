@@ -27,40 +27,50 @@ const TablaPedidos: React.FC = () => {
   ];
 
   return (
-    <div className="p-6 bg-gray-50 min-h-screen">
-      <div className="max-w-4xl mx-auto bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-        <div className="px-6 py-4 border-b border-gray-100">
-          <h2 className="text-xl font-semibold text-gray-800">Panel de Administración: Pedidos</h2>
-        </div>
+    <div className="container-card overflow-hidden">
+      <div className="p-6 border-b border-gray-100">
+        <div className="flex items-center justify-between gap-4">
+          <div>
+            <h3 className="text-lg font-semibold text-slate-900">Pedidos recientes</h3>
+            <p className="text-sm text-gray-500">Resumen de los últimos pedidos y su estado</p>
+          </div>
 
-        {/* 4. Tabla de Tailwind */}
-        <div className="overflow-x-auto">
-          <table className="w-full text-left border-collapse">
-            <thead>
-              <tr className="bg-gray-50 text-gray-500 text-sm uppercase tracking-wider">
-                <th className="px-6 py-4 font-medium">ID Pedido</th>
-                <th className="px-6 py-4 font-medium">Cliente</th>
-                <th className="px-6 py-4 font-medium">Total</th>
-                <th className="px-6 py-4 font-medium text-center">Estado</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-gray-100">
-              {pedidos.map((pedido) => (
-                <tr key={pedido.id} className="hover:bg-gray-50 transition-colors">
-                  <td className="px-6 py-4 font-mono text-sm text-blue-600">{pedido.id}</td>
-                  <td className="px-6 py-4 text-gray-700 font-medium">{pedido.cliente}</td>
-                  <td className="px-6 py-4 text-gray-900">${pedido.total.toFixed(2)}</td>
-                  <td className="px-6 py-4 text-center">
-                    {/* 5. Aplicación del Badge con lógica visual */}
-                    <span className={`px-3 py-1 rounded-full text-xs font-bold border ${ESTILOS_BADGE[pedido.estado]}`}>
-                      {pedido.estado}
-                    </span>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <div className="hidden sm:flex items-center gap-3 text-sm text-gray-600">
+            <div className="text-xs text-gray-400">Total pedidos</div>
+            <div className="px-3 py-1 rounded-md bg-gray-50 text-slate-800 font-medium">{pedidos.length}</div>
+          </div>
         </div>
+      </div>
+
+      <div className="overflow-x-auto">
+        <table className="min-w-full table-auto">
+          <thead>
+            <tr className="text-xs text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left">ID</th>
+              <th className="px-6 py-3 text-left">Cliente</th>
+              <th className="px-6 py-3 text-left">Total</th>
+              <th className="px-6 py-3 text-center">Estado</th>
+              <th className="px-6 py-3 text-right">Acciones</th>
+            </tr>
+          </thead>
+          <tbody className="bg-white divide-y">
+            {pedidos.map((pedido) => (
+              <tr key={pedido.id} className="hover:bg-slate-50 transition-colors">
+                <td className="px-6 py-4 font-mono text-sm text-primary">{pedido.id}</td>
+                <td className="px-6 py-4 text-gray-800 font-medium">{pedido.cliente}</td>
+                <td className="px-6 py-4 text-gray-900">${pedido.total.toFixed(2)}</td>
+                <td className="px-6 py-4 text-center">
+                  <span className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold border ${ESTILOS_BADGE[pedido.estado]}`}>
+                    {pedido.estado}
+                  </span>
+                </td>
+                <td className="px-6 py-4 text-right">
+                  <button className="text-sm text-primary hover:underline">Ver</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );
