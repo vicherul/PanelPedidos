@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -15,7 +16,7 @@ html, body, #root {
 body {
 	background-color: var(--bg);
 	color: #0f172a; /* slate-900 */
-	font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+	font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
@@ -25,3 +26,19 @@ body {
 	border-radius: 0.75rem;
 	box-shadow: 0 10px 30px rgba(2,6,23,0.06);
 }
+
+/* Small utility animations */
+@keyframes pulse-badge {
+	0% { transform: scale(1); opacity: 1 }
+	70% { transform: scale(1.06); opacity: .9 }
+	100% { transform: scale(1); opacity: 1 }
+}
+
+.badge-pulse {
+	animation: pulse-badge 2200ms ease-in-out infinite;
+}
+
+.soft-transition {
+	transition: box-shadow .18s ease, transform .18s ease, background-color .18s ease;
+}
+
